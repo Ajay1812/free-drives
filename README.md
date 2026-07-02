@@ -2,6 +2,11 @@
 
 Aggregate free cloud storage (Google Drive 15 GB + Telegram unlimited) into one web UI with client-side AES-256-GCM encryption.
 
+## Demo
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/85b14747-6d97-4829-84ac-ce124aad5030" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1c4c3fd0-5e6c-46b4-aa51-762bfa3d1f56" />
+
 ## Features
 
 - Waterfall fill — auto-routes files to whichever provider has space
