@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeDrives — Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<header>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+  </svg>
+  <h1>Free<span>Drives</span> <span style="color:var(--muted);font-weight:400;font-size:1rem">/ Dashboard</span></h1>
+  <nav class="header-nav">
+    <a href="/" class="nav-btn">← Files</a>
+    <button id="theme-toggle" title="Toggle theme">🌙</button>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- Overview cards -->
+  <section>
+    <h2>Overview</h2>
+    <div class="stats-grid" id="overview-grid">
+      <div class="stat-card"><div class="stat-value" id="s-total">—</div><div class="stat-label">Total Files</div></div>
+      <div class="stat-card"><div class="stat-value" id="s-size">—</div><div class="stat-label">Total Size</div></div>
+      <div class="stat-card"><div class="stat-value" id="s-enc">—</div><div class="stat-label">Encrypted</div></div>
+      <div class="stat-card"><div class="stat-value" id="s-providers">—</div><div class="stat-label">Active Providers</div></div>
+      <div class="stat-card"><div class="stat-value" id="s-gdrive">—</div><div class="stat-label">On Google Drive</div></div>
+      <div class="stat-card"><div class="stat-value" id="s-telegram">—</div><div class="stat-label">On Telegram</div></div>
+    </div>
+  </section>
+
+  <!-- Storage + File types side by side -->
+  <section>
+    <div class="dash-two-col">
+
+      <div class="chart-card">
+        <div class="chart-card-title">Storage Usage</div>
+        <div id="storage-detail"></div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-card-title">File Types</div>
+        <div class="donut-wrap">
+          <div id="donut-chart"></div>
+          <div id="donut-legend"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Size distribution -->
+  <section>
+    <div class="chart-card">
+      <div class="chart-card-title">Size Distribution</div>
+      <div id="size-dist"></div>
+    </div>
+  </section>
+
+  <!-- Recent uploads -->
+  <section>
+    <div class="chart-card" style="padding:0">
+      <div class="chart-card-title" style="padding:1.25rem 1.5rem 0">Recent Uploads</div>
+      <div class="file-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="name">Name <span class="sort-icon"></span></th>
+              <th data-sort="type">Type <span class="sort-icon"></span></th>
+              <th data-sort="size">Size <span class="sort-icon"></span></th>
+              <th data-sort="provider">Provider <span class="sort-icon"></span></th>
+              <th data-sort="encrypted">Encrypted <span class="sort-icon"></span></th>
+              <th data-sort="date">Date <span class="sort-icon"></span></th>
+            </tr>
+          </thead>
+          <tbody id="recent-tbody">
+            <tr><td colspan="6" class="empty">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="/static/shared.js"></script>
+<script src="/static/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeDrives</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<header>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" stroke-width="2">
+    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+  </svg>
+  <h1>Free<span>Drives</span></h1>
+  <nav class="header-nav">
+    <a href="/dashboard" class="nav-btn">Dashboard</a>
+    <button id="theme-toggle" title="Toggle theme">🌙</button>
+  </nav>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>Storage Providers</h2>
+    <div class="provider-bar" id="provider-bar">
+      <div class="provider-card disabled"><div class="provider-name">Loading…</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Upload Files</h2>
+    <div class="upload-card">
+
+      <!-- Session passphrase banner -->
+      <div id="session-banner" style="display:none">
+        <span>🔑 Passphrase remembered for this session</span>
+        <button type="button" class="btn-sm" onclick="clearSessionPassphrase()">Clear</button>
+      </div>
+
+      <form id="upload-form">
+        <div class="upload-row">
+          <input type="file" id="file-input" multiple required />
+          <select id="provider-select"><option value="">Auto (waterfall)</option></select>
+          <input type="password" id="passphrase" placeholder="Passphrase (optional)" autocomplete="off" />
+          <button type="submit" id="upload-btn">Upload</button>
+        </div>
+
+        <!-- Shown only when a passphrase is typed -->
+        <div id="passphrase-extras" style="display:none">
+          <input type="text" id="hint" placeholder='Hint — e.g. "fav song + birth year" (stored as plain text, not secret)' autocomplete="off" />
+          <label class="remember-label">
+            <input type="checkbox" id="remember-session" />
+            Remember passphrase for this tab session
+          </label>
+        </div>
+
+        <div id="upload-queue" style="display:none">
+          <div class="uq-header">
+            <span id="uq-summary"></span>
+            <span id="uq-concurrency" class="uq-badge"></span>
+          </div>
+          <div id="uq-list"></div>
+        </div>
+        <div id="upload-status-simple"></div>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your Files</h2>
+
+    <div id="bulk-bar" style="display:none">
+      <span id="bulk-count">0 selected</span>
+      <div class="bulk-actions">
+        <button class="btn-sm" onclick="bulkDownload()">⬇ Download</button>
+        <button class="btn-sm danger" onclick="bulkDelete()">🗑 Delete</button>
+        <button class="btn-sm" onclick="clearSelection()">✕ Clear</button>
+      </div>
+    </div>
+
+    <div class="file-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-check"><input type="checkbox" id="select-all" title="Select all on page" /></th>
+            <th data-sort="name">Name <span class="sort-icon"></span></th>
+            <th data-sort="size">Size <span class="sort-icon"></span></th>
+            <th data-sort="provider">Provider <span class="sort-icon"></span></th>
+            <th data-sort="date">Date <span class="sort-icon"></span></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="file-tbody">
+          <tr><td colspan="6" class="empty">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="pagination"></div>
+  </section>
+
+</div>
+
+<script src="/static/shared.js"></script>
+<script src="/static/crypto.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
