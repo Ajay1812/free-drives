@@ -14,7 +14,7 @@ Aggregate free cloud storage (Google Drive 15 GB + Telegram unlimited) into one 
 ## Quick Start
 
 ```bash
-git clone <repo-url> && cd free-drives
+git clone https://github.com/Ajay1812/free-drives.git && cd free-drives
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env   # fill in credentials
@@ -39,6 +39,14 @@ Open http://localhost:8000
 ## .env
 
 ```env
+# Google Drive
+GOOGLE_CREDENTIALS_PATH=credentials/google_credentials.json
+GOOGLE_TOKEN_PATH=credentials/google_token.json
+
+# App
+SECRET_KEY=alike-salon-obtain 
+DATABASE_URL=sqlite:///./freedrives.db
+
 TELEGRAM_API_ID=12345678
 TELEGRAM_API_HASH=your_api_hash
 TELEGRAM_BOT_TOKEN=123456789:AAH-your-bot-token
